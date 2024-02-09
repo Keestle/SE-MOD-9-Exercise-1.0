@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator Example</title>
+</head>
+<body>
+  <label for="Number1">Number1:</label>
+  <input type="number" id="Number1" name="Number1" placeholder="Enter first number">
+
+  <label for="Number2">Number2:</label>
+  <input type="number" id="Number2" name="Number2" placeholder="Enter second number">
+
+  <button onclick= add()>Add</button>
+  <button onclick= sub()>Subtract</button>
+  <button onclick= multiply()>Multiply</button>
+  <button onclick= divide()>Divide</button>
+
+  <div>Result: <span id="result"></span></div>
+
+<script>
+    function add() {
+      let num1 = parseFloat(document.getElementById("Number1").value);
+      let num2 = parseFloat(document.getElementById("Number2").value);
+
+      fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = data.result;            
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function sub() {
+      let num1 = parseFloat(document.getElementById("Number1").value);
+      let num2 = parseFloat(document.getElementById("Number2").value);
+
+      fetch(`/calculator/sub?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = data.result;            
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function multiply() {
+      let num1 = parseFloat(document.getElementById("Number1").value);
+      let num2 = parseFloat(document.getElementById("Number2").value);
+
+      fetch(`/calculator/multiply?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = data.result;            
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function divide() {
+      let num1 = parseFloat(document.getElementById("Number1").value);
+      let num2 = parseFloat(document.getElementById("Number2").value);
+
+      fetch(`/calculator/divide?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = data.result;            
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+</script>
+</body>
+</html>
